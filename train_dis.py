@@ -23,15 +23,19 @@ DEFAULT_CONFIG = {
 wandb.init(config=DEFAULT_CONFIG)
 with open("/opt/ml/input/config/resourceconfig.json", "r") as f:
     resource_config = json.load(f)
+
 # Setting up distributed training variables
-env = os.environ
-for e in env:
-    print(e, env[e])
 NUM_GPUS = torch.cuda.device_count()
 WORLD_SIZE = int(NUM_GPUS) * len(resource_config.get("hosts"))
 RANK = resource_config.get("hosts").index(resource_config.get("current_host"))
 LOCAL_RANK = int(os.environ.get('LOCAL_RANK', 0))
 DEVICE = torch.device(f"cuda:{LOCAL_RANK}" if torch.cuda.is_available() else "cpu")
+
+# Set the MASTER_ADDR and MASTER_PORT for torch.distributed
+os.environ['MASTER_ADDR'] = resource_config.get("hosts")[0]
+os.environ['MASTER_PORT'] = '7777'
+
+# print some info
 print("CUDA Available: ", CUDA)
 print("WORLD_SIZE: ", WORLD_SIZE)
 print("RANK: ", RANK)

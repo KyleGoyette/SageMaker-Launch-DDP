@@ -1,7 +1,11 @@
-FROM 763104351884.dkr.ecr.us-west-2.amazonaws.com/pytorch-training:1.12.0-gpu-py38-cu113-ubuntu20.04-sagemaker
+FROM pytorch/pytorch:1.12.1-cuda11.3-cudnn8-runtime
 COPY ./train_dis.py /
 WORKDIR /
-RUN apt-get update && apt-get install -y libsndfile1
 RUN pip install wandb
-ENV SAGEMAKER_SUBMIT_DIRECTORY /
-ENV SAGEMAKER_PROGRAM /train_dis.py
+# Set NCCL and PyTorch environment variables
+ENV NCCL_DEBUG=INFO
+ENV NCCL_DEBUG_SUBSYS=ALL
+ENV NCCL_SOCKET_IFNAME=eth0
+ENV NCCL_IB_DISABLE=1
+ENV NCCL_P2P_LEVEL=NVL
+ENV TORCH_DISTRIBUTED_DEBUG=INFO

@@ -1,0 +1,11 @@
+{
+    "overrides": {
+        "run_config": {
+            "epochs": 10,
+            "batch_size": 32,
+            "lr": 0.001
+        },
+        "entry_point": ["python", "new_entrypoint.py"],
+        "args": []
+    }
+}

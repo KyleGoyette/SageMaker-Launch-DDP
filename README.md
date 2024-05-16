@@ -124,7 +124,8 @@ Say you’d like to run a different file in your code base, for example `train.p
     
     a. UI - From the Jobs Page Click “Launch” on your job. Then edit the `entry_point` field in the overrides JSON.
     
-    ![Untitled](SageMaker%20Distributed%20Data%20Example%20df9ffe5c979c4931892d62a1b29e4411/Untitled.png)
+    ![image](https://github.com/KyleGoyette/SageMaker-Launch-DDP/assets/13547142/900dd065-06fb-467e-be24-b57afaaff733)
+
     
     b. CLI
     

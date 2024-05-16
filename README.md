@@ -24,7 +24,7 @@ StoppingCondition:
   MaxRuntimeInSeconds: 3600
 ```
 
-### Agent Set up
+## Agent Set up
 
 Launch an agent with a config as shown below. For more information about setting up
 
@@ -44,11 +44,7 @@ Starting the agent:
 
 `wandb launch-agent -e <entity> -q <queue-name> -c launch-agent-config.yaml`
 
-### Code Outline
-
-Example Github repo:
-
-[https://github.com/KyleGoyette/SageMaker-Launch-DDP](https://github.com/KyleGoyette/SageMaker-Launch-DDP)
+## Code Outline
 
 ### Dockerfile.wandb
 
